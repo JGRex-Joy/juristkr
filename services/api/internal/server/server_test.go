@@ -23,7 +23,7 @@ func TestHealth(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			req := httptest.NewRequest(tt.method, tt.path, nil)
+			req := httptest.NewRequestWithContext(t.Context(), tt.method, tt.path, nil)
 			rec := httptest.NewRecorder()
 
 			handler.ServeHTTP(rec, req)
@@ -36,7 +36,7 @@ func TestHealth(t *testing.T) {
 }
 
 func TestHealthBody(t *testing.T) {
-	req := httptest.NewRequest(http.MethodGet, "/healthz", nil)
+	req := httptest.NewRequestWithContext(t.Context(), http.MethodGet, "/healthz", nil)
 	rec := httptest.NewRecorder()
 
 	NewHandler().ServeHTTP(rec, req)
