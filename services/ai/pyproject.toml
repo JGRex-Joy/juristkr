@@ -3,7 +3,10 @@ name = "juristkr-ai"
 version = "0.1.0"
 description = "RAG service for the legislation of the Kyrgyz Republic"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pydantic>=2.12",
+    "pydantic-settings>=2.11",
+]
 
 [build-system]
 requires = ["uv_build>=0.9.7,<0.10.0"]
@@ -21,6 +24,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "W", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
